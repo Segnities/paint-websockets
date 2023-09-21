@@ -1,5 +1,11 @@
 .canvas {
-   width: 400px;
-   height: 200px;
-   background-color: red;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+canvas {
+   border: 1px solid rgb(80, 76, 76);
+   background-color: #fff;
 }

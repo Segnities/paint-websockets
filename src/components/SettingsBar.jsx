@@ -1,6 +1,6 @@
 function SettingsBar() {
    return (
-      <div></div>
+      <div className="settings-bar toolbar"></div>
    )
 }
 

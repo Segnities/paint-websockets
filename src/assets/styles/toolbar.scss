@@ -1,0 +1,76 @@
+@import './variables.scss';
+
+.toolbar {
+   position: absolute;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   height: $toolbar-height;
+   background-color: #fff;
+   box-shadow: 0 4px 9px gray;
+   z-index: 5;
+
+   button {
+      width: 20px;
+      height: 20px;
+      border: none;
+      cursor: pointer;
+      margin: 0 4px;
+   }
+}
+
+.settings-bar {
+   top: $toolbar-height;
+   z-index: 1;
+}
+
+.left-menu {
+   padding-left: 50px;
+}
+
+.right-menu {
+   padding-right: 50px;
+}
+
+.toolbar-btn {
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-color: transparent;
+}
+
+.brush {
+   background-image: url('../img/brush.svg');
+}
+
+.rect {
+   background-image: url('../img/rect.svg');
+}
+
+.circle {
+   background-image: url('../img/circle.svg');
+}
+
+.eraser {
+   background-image: url('../img/eraser.svg');
+}
+
+.line {
+   background-image: url('../img/line.svg');
+}
+
+.image {
+   background-image: url('../img/image.svg');
+}
+
+.undo {
+   background-image: url('../img/undo.svg');
+}
+
+.redo {
+   background-image: url('../img/redo.svg');
+}
+
+.save {
+   background-image: url('../img/save.svg');
+}
