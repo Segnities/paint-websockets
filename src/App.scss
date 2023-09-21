@@ -1,0 +1,8 @@
+@import './assets/styles/variables.scss';
+
+.app {
+   width: 100vw;
+   background-color: $background-color;
+   max-height: 100vh;
+   height: 100vh;
+}
