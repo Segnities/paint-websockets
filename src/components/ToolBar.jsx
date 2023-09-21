@@ -9,7 +9,7 @@ function ToolBar() {
             <button className='toolbar-btn circle' />
             <button className='toolbar-btn eraser' />
             <button className='toolbar-btn line' />
-            <button className='toolbar-btn image' />
+            <input type='color' className='color-picker'/> 
          </div>
          <div className='right-menu'>
             <button className='toolbar-btn undo' />

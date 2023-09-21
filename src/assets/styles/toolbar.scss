@@ -16,7 +16,7 @@
       height: 20px;
       border: none;
       cursor: pointer;
-      margin: 0 4px;
+      margin: 0 5px;
    }
 }
 
@@ -37,6 +37,11 @@
    background-repeat: no-repeat;
    background-size: contain;
    background-color: transparent;
+   border: none;
+}
+
+.color-picker {
+   margin-left: 10px;
 }
 
 .brush {
@@ -73,4 +78,13 @@
 
 .save {
    background-image: url('../img/save.svg');
+}
+
+@media screen and (max-width: 772px) {
+   .right-menu {
+      padding-right: 25px;
+   }
+   .left-menu {
+      padding-left: 25px;
+   }
 }
