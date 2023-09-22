@@ -3,11 +3,14 @@ import { observer } from 'mobx-react-lite';
 import '../assets/styles/canvas.scss';
 
 import canvasState from '../store/canvasState';
+import toolState from "../store/toolState.js";
+import Brush from "../tools/Brush.js";
 
 const Canvas = observer(() => {
    const canvasRef = useRef();
    useEffect(()=> {
       canvasState.setCanvas(canvasRef.current);
+      toolState.setTool(new Brush(canvasRef.current));
    }, [])
 
    return (
