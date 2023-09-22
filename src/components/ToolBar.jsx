@@ -1,11 +1,14 @@
 import '../assets/styles/toolbar.scss';
-
+import toolState from "../store/toolState.js";
+import Brush from "../tools/Brush.js";
+import canvasState from "../store/canvasState.js";
+import Rectangle from "../tools/Rectangle.js";
 function ToolBar() {
    return (
       <div className="toolbar">
          <div className='left-menu'>
-            <button className='toolbar-btn brush' />
-            <button className='toolbar-btn rect' />
+            <button className='toolbar-btn brush' onClick={()=> toolState.setTool(new Brush(canvasState.canvas))}/>
+            <button className='toolbar-btn rect' onClick={()=> toolState.setTool(new Rectangle(canvasState.canvas))}/>
             <button className='toolbar-btn circle' />
             <button className='toolbar-btn eraser' />
             <button className='toolbar-btn line' />
