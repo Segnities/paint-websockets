@@ -5,6 +5,8 @@ import canvasState from "../store/canvasState.js";
 import Rectangle from "../tools/Rectangle.js";
 import Circle from "../tools/Circle.js";
 import Eraser from '../tools/Eraser';
+import Line from '../tools/Line';
+
 function ToolBar() {
    return (
       <div className="toolbar">
@@ -13,7 +15,7 @@ function ToolBar() {
             <button className='toolbar-btn rect' onClick={()=> toolState.setTool(new Rectangle(canvasState.canvas))}/>
             <button className='toolbar-btn circle' onClick={()=> toolState.setTool(new Circle(canvasState.canvas))}/>
             <button className='toolbar-btn eraser' onClick={()=> toolState.setTool(new Eraser(canvasState.canvas))}/>
-            <button className='toolbar-btn line' />
+            <button className='toolbar-btn line' onClick={()=> toolState.setTool(new Line(canvasState.canvas))}/>
             <input type='color' className='color-picker'/> 
          </div>
          <div className='right-menu'>
