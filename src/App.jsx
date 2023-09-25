@@ -1,7 +1,7 @@
-import './App.scss'
+import './App.scss';
+import Canvas from "./components/Canvas";
 import SettingsBar from './components/SettingsBar';
 import ToolBar from './components/Toolbar';
-import Canvas from "./components/Canvas";
 
 function App() {
   return (

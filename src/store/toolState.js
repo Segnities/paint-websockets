@@ -1,13 +1,13 @@
 import { makeAutoObservable } from "mobx";
 
 class ToolState {
-   toll = null;
+   tool = null;
    constructor() {
       makeAutoObservable(this);
    }
 
    setTool(tool) {
-      this.toll = tool;
+      this.tool = tool;
    }
 }
 

@@ -3,7 +3,7 @@ import Tool from "./Tool.js";
 export default class Circle extends Tool {
     constructor(canvas) {
         super(canvas);
-        this.ctx = canvas.getContext("2d"); // Get the 2D rendering context
+        this.ctx = canvas.getContext("2d");
         this.listen();
     }
 

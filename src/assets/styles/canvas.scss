@@ -5,6 +5,10 @@
    align-items: center;
 }
 
+.brush-cursor {
+   cursor: url('../img/icons8-eraser-tool-48.png') 10 10, auto;
+}
+
 canvas {
    border: 1px solid rgb(80, 76, 76);
    background-color: #fff;
