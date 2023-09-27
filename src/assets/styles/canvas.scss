@@ -1,8 +1,9 @@
 .canvas {
-   height: 100vh;
    display: flex;
+   padding: 0 0 32px 0;
    justify-content: center;
-   align-items: center;
+   align-items: end;
+   height: 100vh;
 }
 
 .brush-cursor {

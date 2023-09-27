@@ -1,11 +1,11 @@
 @import './variables.scss';
 
 .toolbar {
-   position: absolute;
    display: flex;
    justify-content: space-between;
    align-items: center;
    width: 100%;
+   position: absolute;
    height: $toolbar-height;
    background-color: #fff;
    box-shadow: 0 4px 9px gray;
@@ -17,6 +17,13 @@
       border: none;
       cursor: pointer;
       margin: 0 5px;
+   }
+}
+
+.l-width {
+   margin-left: 15px;
+   input {
+      margin-left: 10px;
    }
 }
 
