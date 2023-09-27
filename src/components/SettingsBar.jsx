@@ -14,6 +14,15 @@ function SettingsBar() {
                     onChange={e => toolState.setLineWidth(e.target.value)}
                 />
             </div>
+            <div className="stroke-color">
+                <label htmlFor="strk-color">Stroke color</label>
+                <input
+                    id="strk-color"
+                    type="color"
+                    onChange={e => toolState.setFillStroke(e.target.value)}
+
+                />
+            </div>
         </div>
     )
 }

@@ -20,6 +20,13 @@
    }
 }
 
+.stroke-color {
+   margin-right: 15px;
+   label {
+      margin-right: 10px;
+   }
+}
+
 .l-width {
    margin-left: 15px;
    input {
@@ -30,6 +37,11 @@
 .settings-bar {
    top: $toolbar-height;
    z-index: 1;
+
+   & > div  {
+      display: flex;
+      align-items: center;
+   }
 }
 
 .left-menu {
