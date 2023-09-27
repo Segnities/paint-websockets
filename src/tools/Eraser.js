@@ -5,7 +5,6 @@ export default class Eraser extends Tool {
       super(canvas);
       this.listen();
       this.ctx.strokeStyle="white";
-      this.ctx.lineWidth=12;
    }
 
    listen() {

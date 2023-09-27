@@ -8,11 +8,11 @@ class ToolState {
     }
 
     setFillColor(color) {
-        this.tool.fillStyle = color;
+        this.tool.fillColor = color;
     }
 
     setFillStroke(color) {
-        this.tool.strokeStyle = color;
+        this.tool.fillStrokeColor = color;
     }
 
     setLineWidth(width) {
