@@ -25,8 +25,8 @@ const ToolBar = observer(() => {
             <input type='color' className='color-picker' onChange={e => changeColor(e)}/> 
          </div>
          <div className='right-menu'>
-            <button className='toolbar-btn undo' />
-            <button className='toolbar-btn redo' />
+            <button className='toolbar-btn undo' onClick={() => canvasState.undo()} />
+            <button className='toolbar-btn redo' onClick={()=> canvasState.redo()}/>
             <button className='toolbar-btn save' />
          </div>
       </div>

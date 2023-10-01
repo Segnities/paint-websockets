@@ -10,7 +10,11 @@ import Eraser from "../tools/Eraser";
 const Canvas = observer(() => {
    const canvasRef = useRef();
    const tool = toolState.tool;
-   const isBrush = tool instanceof Eraser; 
+   const isBrush = tool instanceof Eraser;
+
+   const mouseDownHandler = () => {
+      canvasState.pushToUndo(canvasRef.current.toDataURL());
+   }
 
    useEffect(()=> {
       canvasState.setCanvas(canvasRef.current);
@@ -19,7 +23,7 @@ const Canvas = observer(() => {
 
    return (
       <div className={`canvas ${isBrush ? 'brush-cursor' : ''}`}>
-         <canvas ref={canvasRef}  width={600} height={400}></canvas>
+         <canvas onMouseDown={()=> mouseDownHandler()} ref={canvasRef}  width={600} height={400}></canvas>
       </div>
    );
 });
