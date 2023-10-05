@@ -1,0 +1,32 @@
+.m-root-section {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background-color: rgba(0,0,0, 0.3);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.active-modal {
+  display: flex;
+}
+
+.m-window {
+  width: 75%;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.close {
+  display: flex;
+  padding: 14px;
+  justify-content: end;
+  align-items: center;
+  
+  img {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+}

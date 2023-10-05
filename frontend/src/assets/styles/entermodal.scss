@@ -1,0 +1,12 @@
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 12px;
+
+  button {
+    max-width: 120px;
+    align-self: end;
+  }
+}
