@@ -1,16 +1,19 @@
 import './App.scss';
-import Canvas from "./components/Canvas";
-import SettingsBar from './components/SettingsBar';
-import ToolBar from './components/Toolbar';
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import {nanoid} from "nanoid";
 
 function App() {
-  return (
-    <div className="app">
-      <ToolBar/>
-      <SettingsBar/>
-      <Canvas/>
-    </div>
-  )
+    return (
+        <div className="app">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/:id" element={<Home/>}/>
+                    <Route path="*" element={<Navigate to={`/${nanoid()}`} replace/>}/>
+                </Routes>
+            </BrowserRouter>
+        </div>
+    )
 }
 
 export default App;

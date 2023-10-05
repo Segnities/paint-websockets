@@ -12,8 +12,10 @@
   "dependencies": {
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.4",
+    "nanoid": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "sass": "^1.67.0"
   },
   "devDependencies": {
