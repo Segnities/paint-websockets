@@ -1,14 +1,20 @@
-import Modal from "./UI/Modal/index.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import {Button, TextField} from "@mui/material";
+import Modal from "./UI/Modal/index.jsx";
 
-import "../assets/styles/entermodal.scss";
 import {observer} from "mobx-react-lite";
 import canvasState from "../store/canvasState.js";
+
+
+import "../assets/styles/entermodal.scss";
+
 
 const EnterModal = observer(() => {
     const [show, setShow] = useState(true);
     const [username, setUsername] = useState("");
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const params = useParams();
     const onHide = () => {
         if (username) {
             setShow(false);
@@ -18,7 +24,22 @@ const EnterModal = observer(() => {
     const connectHandler = () => {
         canvasState.setUsername(username);
         setShow(false);
+        setFormSubmitted(true);
     }
+
+    useEffect(()=> {
+        if (username && formSubmitted) {
+            const webs = new WebSocket("ws://localhost:7826");
+            console.log("Connection created!");
+            webs.onopen = () => {
+                webs.send(JSON.stringify({
+                    id: params.id,
+                    username: username,
+                    method: "connection"
+                }));
+            }
+        }
+    }, [username, formSubmitted]);
 
     return (
         <Modal show={show} onHide={onHide}>
