@@ -5,8 +5,18 @@ class CanvasState {
     undoList = [];
     redoList = [];
     username= "";
+    webs = null;
+    sessionId = null;
     constructor() {
         makeAutoObservable(this);
+    }
+
+    setWebs(webs) {
+        this.webs = webs;
+    }
+
+    setSessionId(userId) {
+        this.sessionId = userId;
     }
 
     setUsername(username) {

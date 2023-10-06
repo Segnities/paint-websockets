@@ -17,6 +17,8 @@ app.ws('/', (ws, req)=> {
         const jsonMsg = JSON.parse(msg);
         if (jsonMsg.method === "connection") {
             connectionHandler(ws, jsonMsg);
+        } else if (jsonMsg.method === "draw") {
+            broadcastConnectionHandler(ws, jsonMsg);
         }
     });
 });
@@ -38,7 +40,7 @@ function broadcastConnectionHandler(ws, msg) {
     try {
         aWss.clients.forEach(client => {
             if (client.id === msg.id) {
-                client.send("User " + msg.username + " connected!");
+                client.send(JSON.stringify(msg));
             }
         });
     } catch (e) {

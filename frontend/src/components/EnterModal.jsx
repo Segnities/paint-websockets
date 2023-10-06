@@ -27,9 +27,15 @@ const EnterModal = observer(() => {
         setFormSubmitted(true);
     }
 
+    const drawHandler = (msg) => {
+
+    }
+
     useEffect(()=> {
         if (username && formSubmitted) {
             const webs = new WebSocket("ws://localhost:7826");
+            canvasState.setWebs(webs);
+            canvasState.setSessionId(params.id);
             console.log("Connection created!");
             webs.onopen = () => {
                 webs.send(JSON.stringify({
@@ -37,6 +43,15 @@ const EnterModal = observer(() => {
                     username: username,
                     method: "connection"
                 }));
+            }
+            webs.onmessage = (event) => {
+                let msg = JSON.parse(event.data);
+                console.log(msg);
+                if (msg.method === "connection") {
+                    console.info("User " + msg.username + " was connected!")
+                } else if (msg.method === "draw") {
+                    drawHandler(msg);
+                }
             }
         }
     }, [username, formSubmitted]);
