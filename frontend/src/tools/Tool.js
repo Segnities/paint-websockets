@@ -1,10 +1,12 @@
 export default class Tool {
-   constructor(canvas) {
+   constructor(canvas, webs, sessionId) {
       this.canvas = canvas;
+      this.webs = webs;
+      this.sessionId = sessionId;
       this.ctx = canvas.getContext('2d');
       this.destroyEvents();
    }
-   
+
    set fillColor(color) {
       this.ctx.fillStyle = color;
    }

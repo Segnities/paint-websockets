@@ -4,7 +4,6 @@ class CanvasState {
     canvas = null;
     undoList = [];
     redoList = [];
-    username= "";
     webs = null;
     sessionId = null;
     constructor() {
@@ -19,9 +18,6 @@ class CanvasState {
         this.sessionId = userId;
     }
 
-    setUsername(username) {
-        this.username = username;
-    }
     setCanvas(canvas) {
         this.canvas = canvas;
     }

@@ -17,7 +17,7 @@ const ToolBar = observer(() => {
    return (
       <div className="toolbar">
          <div className='left-menu'>
-            <button className='toolbar-btn brush' onClick={()=> toolState.setTool(new Brush(canvasState.canvas))}/>
+            <button className='toolbar-btn brush' onClick={()=> toolState.setTool(new Brush(canvasState.canvas, canvasState.webs, canvasState.sessionId))}/>
             <button className='toolbar-btn rect' onClick={()=> toolState.setTool(new Rectangle(canvasState.canvas))}/>
             <button className='toolbar-btn circle' onClick={()=> toolState.setTool(new Circle(canvasState.canvas))}/>
             <button className='toolbar-btn eraser' onClick={()=> toolState.setTool(new Eraser(canvasState.canvas))}/>

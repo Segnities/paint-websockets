@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.ws('/', (ws, req)=> {
     console.log("CONNECTION CREATED");
-    ws.send("SUCCESSFUL CONNECTION!");
+    ws.send(JSON.stringify({msg: "SUCCESSFUL CONNECTION!"}));
     ws.on('message', (msg)=> {
         const jsonMsg = JSON.parse(msg);
         if (jsonMsg.method === "connection") {
