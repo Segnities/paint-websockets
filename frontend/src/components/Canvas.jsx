@@ -11,6 +11,7 @@ import Eraser from "../tools/Eraser";
 import '../assets/styles/canvas.scss';
 import {useParams} from "react-router-dom";
 import Rectangle from "../tools/Rectangle.js";
+import Circle from "../tools/Circle.js";
 
 
 const Canvas = observer(() => {
@@ -36,8 +37,12 @@ const Canvas = observer(() => {
       if (figureType === "brush"){
          Brush.draw(ctx, figure.x, figure.y,figure.color, figure.strokeColor, figure.lineWidth);
       } else if (figureType === "rect") {
-         console.log("DRAW RECT")
+         console.log("DRAWING RECT")
          Rectangle.drawByData(ctx, figure.x, figure.y, figure.width, figure.height, figure.color, figure.strokeColor, figure.lineWidth);
+      } else if (figureType === "circle") {
+         console.log("DRAWING CIRCLE");
+         const radius =  Math.sqrt(figure.width ** 2 + figure.height ** 2);
+         Circle.drawByData(ctx, figure.x, figure.y, radius, figure.color, figure.strokeColor, figure.lineWidth);
       } else if (figureType === "finish") {
          ctx.beginPath();
       }
@@ -75,8 +80,8 @@ const Canvas = observer(() => {
    }, [username, formSubmitted]);
 
    return (
-      <div className={`canvas ${isBrush ? 'brush-cursor' : ''}`}>
-         <canvas onMouseDown={()=> mouseDownHandler()} ref={canvasRef}  width={600} height={400}></canvas>
+      <div className="canvas">
+         <canvas className={`${isBrush ? 'brush-cursor' : ''}`} onMouseDown={()=> mouseDownHandler()} ref={canvasRef}  width={600} height={400}></canvas>
       </div>
    );
 });

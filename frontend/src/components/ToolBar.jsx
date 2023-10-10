@@ -19,7 +19,7 @@ const ToolBar = observer(() => {
          <div className='left-menu'>
             <button className='toolbar-btn brush' onClick={()=> toolState.setTool(new Brush(canvasState.canvas, canvasState.webs, canvasState.sessionId))}/>
             <button className='toolbar-btn rect' onClick={()=> toolState.setTool(new Rectangle(canvasState.canvas, canvasState.webs, canvasState.sessionId))}/>
-            <button className='toolbar-btn circle' onClick={()=> toolState.setTool(new Circle(canvasState.canvas))}/>
+            <button className='toolbar-btn circle' onClick={()=> toolState.setTool(new Circle(canvasState.canvas, canvasState.webs, canvasState.sessionId))}/>
             <button className='toolbar-btn eraser' onClick={()=> toolState.setTool(new Eraser(canvasState.canvas))}/>
             <button className='toolbar-btn line' onClick={()=> toolState.setTool(new Line(canvasState.canvas))}/>
             <input type='color' className='color-picker' onChange={e => changeColor(e)}/> 

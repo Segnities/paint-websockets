@@ -1,8 +1,8 @@
 import Tool from "./Tool.js";
 
 export default class Circle extends Tool {
-    constructor(canvas) {
-        super(canvas);
+    constructor(canvas, webs, sessionId) {
+        super(canvas, webs, sessionId);
         this.ctx = canvas.getContext("2d");
         this.listen();
     }
@@ -15,6 +15,21 @@ export default class Circle extends Tool {
 
     mouseUpHandler() {
         this.mouseDown = false;
+        this.webs.send(JSON.stringify({
+            method: "draw",
+            id: this.sessionId,
+            figure: {
+                type:"circle",
+                x: this.startX,
+                y: this.startY,
+                width: this.width,
+                height: this.height,
+                radius: this.radius,
+                color: this.ctx.fillStyle,
+                strokeColor: this.ctx.strokeStyle,
+                lineWidth: this.ctx.lineWidth,
+            }
+        }));
     }
 
     mouseDownHandler(e) {
@@ -29,10 +44,10 @@ export default class Circle extends Tool {
         if (this.mouseDown) {
             let currentX = e.pageX - e.target.offsetLeft;
             let currentY = e.pageY - e.target.offsetTop;
-            let width = currentX - this.startX;
-            let height = currentY - this.startY;
-            const radius = Math.sqrt(width ** 2 + height ** 2);
-            this.draw(this.startX, this.startY, radius);
+            this.width = currentX - this.startX;
+            this.height = currentY - this.startY;
+            this.radius = Math.sqrt(this.width ** 2 + this.height ** 2);
+            this.draw(this.startX, this.startY, this.radius);
         }
     }
 
@@ -47,5 +62,14 @@ export default class Circle extends Tool {
             this.ctx.fill();
             this.ctx.stroke();
         };
+    }
+    static drawByData(ctx, x, y, r, color, strokeColor, lineWidth) {
+        ctx.fillStyle = color;
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
     }
 }
