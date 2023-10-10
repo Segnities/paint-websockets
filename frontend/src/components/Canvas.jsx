@@ -37,7 +37,7 @@ const Canvas = observer(() => {
          Brush.draw(ctx, figure.x, figure.y);
       } else if (figureType === "rect") {
          console.log("DRAW RECT")
-         Rectangle.drawByData(ctx, figure.x, figure.y, figure.width, figure.height);
+         Rectangle.drawByData(ctx, figure.x, figure.y, figure.width, figure.height, figure.color, figure.strokeColor, figure.lineWidth);
       } else if (figureType === "finish") {
          ctx.beginPath();
       }
