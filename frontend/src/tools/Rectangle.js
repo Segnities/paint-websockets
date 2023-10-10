@@ -18,11 +18,11 @@ export default class Rectangle extends Tool {
             method: "draw",
             id: this.sessionId,
             figure: {
-                type: "rectangle",
+                type: "rect",
                 x: this.startX,
                 y: this.startY,
                 width: this.width,
-                height:  this.height
+                height: this.height
             }
         }));
     }
@@ -41,14 +41,14 @@ export default class Rectangle extends Tool {
             let currentY = e.pageY - e.target.offsetTop;
             this.width = currentX - this.startX;
             this.height = currentY - this.startY;
-            this.draw(this.startX, this.startY, width, height);
+            this.draw(this.startX, this.startY, this.width, this.height);
         }
     }
 
     draw(sx, sy, w, h) {
         const img = new Image();
         img.src = this.saved;
-        img.onload =  () => {
+        img.onload = () => {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
             this.ctx.beginPath();
@@ -59,5 +59,12 @@ export default class Rectangle extends Tool {
         this.ctx.rect(sx, sy, w, h);
         this.ctx.fill();
         this.ctx.stroke();
+    }
+
+    static drawByData(ctx, x, y, w, h) {
+        ctx.beginPath();
+        ctx.rect(x, y, w, h);
+        ctx.fill();
+        ctx.stroke();
     }
 }

@@ -10,6 +10,7 @@ import Eraser from "../tools/Eraser";
 
 import '../assets/styles/canvas.scss';
 import {useParams} from "react-router-dom";
+import Rectangle from "../tools/Rectangle.js";
 
 
 const Canvas = observer(() => {
@@ -34,6 +35,9 @@ const Canvas = observer(() => {
 
       if (figureType === "brush"){
          Brush.draw(ctx, figure.x, figure.y);
+      } else if (figureType === "rect") {
+         console.log("DRAW RECT")
+         Rectangle.drawByData(ctx, figure.x, figure.y, figure.width, figure.height);
       } else if (figureType === "finish") {
          ctx.beginPath();
       }
