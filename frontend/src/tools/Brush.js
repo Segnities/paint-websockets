@@ -42,7 +42,7 @@ export default class Brush extends Tool {
          }));
       }
    }
-   static draw(ctx, x, y, color, strokeColor, lineWidth) {
+   static draw(ctx, x, y, color, strokeColor,lineWidth) {
       ctx.fillStyle = color;
       ctx.strokeStyle = strokeColor;
       ctx.lineWidth = lineWidth;

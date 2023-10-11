@@ -8,11 +8,11 @@ import usernameFormState from "../store/usernameFormState.js";
 import Brush from "../tools/Brush.js";
 import Eraser from "../tools/Eraser";
 
-import '../assets/styles/canvas.scss';
 import {useParams} from "react-router-dom";
 import Rectangle from "../tools/Rectangle.js";
 import Circle from "../tools/Circle.js";
 
+import '../assets/styles/canvas.scss';
 
 const Canvas = observer(() => {
    const canvasRef = useRef();
@@ -43,6 +43,8 @@ const Canvas = observer(() => {
          console.log("DRAWING CIRCLE");
          const radius =  Math.sqrt(figure.width ** 2 + figure.height ** 2);
          Circle.drawByData(ctx, figure.x, figure.y, radius, figure.color, figure.strokeColor, figure.lineWidth);
+      } else if (figureType === "eraser") {
+         Eraser.erase(ctx, figure.x, figure.y, figure.lineWidth);
       } else if (figureType === "finish") {
          ctx.beginPath();
       }
