@@ -19,6 +19,8 @@ app.ws('/', (ws, req)=> {
             connectionHandler(ws, jsonMsg);
         } else if (jsonMsg.method === "draw") {
             broadcastConnectionHandler(ws, jsonMsg);
+        } else if (jsonMsg.method === "history") {
+            broadcastConnectionHandler(ws, jsonMsg);
         }
     });
 });

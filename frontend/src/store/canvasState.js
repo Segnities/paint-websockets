@@ -14,6 +14,13 @@ class CanvasState {
         this.webs = webs;
     }
 
+    setUndoList(arr) {
+        this.undoList = [...arr];
+    }
+
+    setRedoList(arr) {
+        this.redoList = [...arr];
+    }
     setSessionId(userId) {
         this.sessionId = userId;
     }

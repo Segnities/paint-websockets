@@ -31,7 +31,6 @@ const Canvas = observer(() => {
     const drawHandler = (msg) => {
         const figure = msg.figure;
         const ctx = canvasRef.current.getContext("2d");
-
         const figureType = figure.type;
 
         if (figureType === "brush") {
@@ -53,6 +52,19 @@ const Canvas = observer(() => {
         }
     }
 
+    const historyHandler = (msg) => {
+        const actionType = msg.action;
+        console.log("ACTION")
+        canvasState.setUndoList(msg.undoList);
+        canvasState.setRedoList(msg.redoList);
+
+        if (actionType === "undo") {
+            console.log("UNDO")
+        } else if (actionType === "redo") {
+            console.log("REDO!")
+        }
+    }
+
     useEffect(() => {
         canvasState.setCanvas(canvasRef.current);
     }, []);
@@ -63,6 +75,7 @@ const Canvas = observer(() => {
             canvasState.setWebs(webs);
             canvasState.setSessionId(params.id);
             console.log("Connection created!");
+
             toolState.setTool(new Brush(canvasRef.current, webs, params.id));
 
             webs.onopen = () => {
@@ -77,6 +90,9 @@ const Canvas = observer(() => {
                 console.log(msg);
                 if (msg.method === "connection") {
                     console.info("User " + msg.username + " was connected!")
+                } else if(msg.method === "history") {
+                    historyHandler(msg);
+                    console.log(msg)
                 } else if (msg.method === "draw") {
                     drawHandler(msg);
                 }
@@ -86,8 +102,12 @@ const Canvas = observer(() => {
 
     return (
         <div className="canvas">
-            <canvas className={`${isBrush ? 'brush-cursor' : ''}`} onMouseDown={() => mouseDownHandler()}
-                    ref={canvasRef} width={600} height={400}></canvas>
+            <canvas
+                className={`${isBrush ? 'brush-cursor' : ''}`}
+                onMouseDown={() => mouseDownHandler()}
+                ref={canvasRef} width={600} height={400}
+            >
+            </canvas>
         </div>
     );
 });
