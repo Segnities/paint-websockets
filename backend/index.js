@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const webs = require('express-ws');
+const cors = require("cors")
+
 require('dotenv').config();
 
 const wsServ = webs(app);
@@ -8,6 +10,7 @@ const aWss = wsServ.getWss();
 
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json());
 
 app.ws('/', (ws, req)=> {
@@ -24,6 +27,25 @@ app.ws('/', (ws, req)=> {
         }
     });
 });
+
+app.post("/image", (req, res)=> {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        return res.statusCode(500).json({message: error.message});
+    }
+});
+
+app.get("/image", ()=> {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        return res.statusCode(500).json({message: error.message});
+    }
+});
+
 app.listen(PORT, ()=> {
     console.log("Server started on PORT: " + PORT);
 });
