@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const webs = require('express-ws');
 const cors = require("cors")
+const fs = require("fs");
+const path = require("path");
 
 require('dotenv').config();
 
@@ -23,26 +25,28 @@ app.ws('/', (ws, req)=> {
         } else if (jsonMsg.method === "draw") {
             broadcastConnectionHandler(ws, jsonMsg);
         } else if (jsonMsg.method === "history") {
-            broadcastConnectionHandler(ws, jsonMsg);
+            broadcastConnectionHandler(ws, jsonMsg); 
         }
     });
 });
 
 app.post("/image", (req, res)=> {
     try {
-        
+        const data = req.body.img.replace("data:image/png;base64,", "");
+        fs.writeFileSync(path.resolve(__dirname, "files", `${req.query.id}.jpg`), data, "base64");
+        return res.status(200).json({message: "Success!"})
     } catch (error) {
         console.log(error);
-        return res.statusCode(500).json({message: error.message});
+        return res.status(500).json({message: error.message});
     }
 });
 
-app.get("/image", ()=> {
+app.get("/image", (req, res)=> {
     try {
-        
+        return res.status(200).json({message: "ok"})
     } catch (error) {
         console.log(error);
-        return res.statusCode(500).json({message: error.message});
+        return res.status(500).json({message: error.message});
     }
 });
 

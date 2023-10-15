@@ -1,6 +1,7 @@
-import {useEffect, useRef} from "react";
-import {observer} from 'mobx-react-lite';
-import {useParams} from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { observer } from 'mobx-react-lite';
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import canvasState from '../store/canvasState';
 import toolState from "../store/toolState.js";
@@ -26,6 +27,15 @@ const Canvas = observer(() => {
 
     const mouseDownHandler = () => {
         canvasState.pushToUndo(canvasRef.current.toDataURL());
+        axios.post("http://localhost:7826/image", {
+            img: canvasRef.current.toDataURL()
+        }, {
+            params: {
+                id: params.id
+            }
+        })
+            .then(() => console.log("Success!!!"))
+            .catch(e => console.log(e));
     }
 
     const drawHandler = (msg) => {
@@ -90,7 +100,7 @@ const Canvas = observer(() => {
                 console.log(msg);
                 if (msg.method === "connection") {
                     console.info("User " + msg.username + " was connected!")
-                } else if(msg.method === "history") {
+                } else if (msg.method === "history") {
                     historyHandler(msg);
                     console.log(msg)
                 } else if (msg.method === "draw") {

@@ -21,6 +21,7 @@ const ToolBar = observer(() => {
     }
     const download = () => {
         const dataUrl = canvasState.canvas.toDataURL();
+        console.log(dataUrl);
         const downloadLink = document.createElement("a");
         downloadLink.href = dataUrl;
         downloadLink.download = canvasState.sessionId + ".jpg";
