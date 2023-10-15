@@ -43,7 +43,9 @@ app.post("/image", (req, res)=> {
 
 app.get("/image", (req, res)=> {
     try {
-        return res.status(200).json({message: "ok"})
+        const file = fs.readFileSync(path.resolve(__dirname, "files", `${req.query.id}.jpg`));
+        const dataBase64 = "data:image/png;base64," + file.toString('base64');
+        return res.status(200).json(dataBase64);
     } catch (error) {
         console.log(error);
         return res.status(500).json({message: error.message});

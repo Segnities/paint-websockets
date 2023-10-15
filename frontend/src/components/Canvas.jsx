@@ -77,6 +77,16 @@ const Canvas = observer(() => {
 
     useEffect(() => {
         canvasState.setCanvas(canvasRef.current);
+        const ctx = canvasRef.current.getContext('2d');
+        axios.get(`http://localhost:7826/image?id=${params.id}`)
+            .then((response) => {
+                const img = new Image();
+                img.src = response.data;
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+                    ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height);
+                }
+            });
     }, []);
 
     useEffect(() => {
